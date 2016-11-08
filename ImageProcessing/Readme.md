@@ -32,7 +32,7 @@ The output should be provided in scan converted format and stored in  `/home/ubu
 
 You should provide a `run()` method. If you run the `run()` method, then your code gets the input image, process it and throws an output denoised image. 
 
-The `main()` method triggers the `run()` method. On our side, a script stress-testsyour code and the performance KPIs update a leaderboard on our website.
+The `main()` method triggers the `run()` method. On our side, a script stress-testsyour code and the performance KPIs update a leaderboard on our website
 
 All code are opened to your contribution and improvement 😉
 
