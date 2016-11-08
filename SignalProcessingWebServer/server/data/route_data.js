@@ -1,5 +1,5 @@
 var Data = require('./data.model'),
-    fs = require('fs'),
+    fs = require('graceful-fs'),
     godata = [];
 
 module.exports = function(app) {
@@ -24,7 +24,7 @@ module.exports = function(app) {
             content = fs.readFileSync("./public/img.txt", "UTF-8");
             godata.push(content);
          res.status(200).send(godata)
-            }, 3000);
+            }, 6000);
 
     });
 
@@ -42,12 +42,16 @@ module.exports = function(app) {
      @return return nothing */
     app.get('/api/:id/sendImages',function(req,res){
         Data.findById(req.params.id,function(err, datum) {
-    	   // var images= 0;
-    	    var images = datum.images,
-                file = fs.createWriteStream("./public/img.txt");
-    	    file.write(images[0]);
-    	    file.close();
-	   });
+    	    if(err){console.log(err);};
+    	    if(datum){
+	        	var images = datum.images;
+	            file = fs.createWriteStream("./public/img.txt");      	   
+	    		file.write(images[0]);
+	        	file.close();   
+    		};
+    	});
+
+        res.end();
     });
 
     /** @brief download the images in the browser client of user

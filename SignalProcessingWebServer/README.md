@@ -45,16 +45,9 @@ to use or to create the 'echopen' database
 
 finally, go to kitsoft/SignalProcessingWebServer  and type :
 ```
- node server 
+ node --max_old_space_size=100000 --max_executable_size=100000 --optimize-for_size index.js
 ```
 server will be available on localhost:3700 
-
-
-## Contributors
-
-* https://github.com/ydre
-* https://github.com/morphus121
-* Mathieu Regnier
 
 
 ### if u have some problems with mongod ###
@@ -69,14 +62,33 @@ sudo rm mongod.lock
 
 and rm everything else except  /journal.
 
-u may have to type : 
+u have to type : 
 ```
-export lc_all=c
+export LC_ALL=C
 ```
 Finally, type :
 ```
 sudo mongod --smallfiles
 ```
 
+## Webclient
+
+In order to test the server, u can use the c script for client, located in the /assets repertory.
+
+Paste the .c and .h file to a  new repertory, then compile it :
+```
+gcc +g test_client_web2.c -o webclient
+
+```
+Then, when the node server is on, type :
+```
+./webclient
+```
+to use it.
 
 
+## Contributors
+
+* [ydre](https://github.com/ydre)
+* [morphus121](https://github.com/morphus121)
+* [Mathieu Regnier](https://github.com/Regnier-Mathieu)

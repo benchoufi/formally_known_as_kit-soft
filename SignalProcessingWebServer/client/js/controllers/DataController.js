@@ -39,28 +39,7 @@ angular.module('app')
         /** @brief recovered the settings from the settings page html and send it on the c server
          @param object settings : all the parameters entered by the user or set it by default
          @return no return */
-        this.sendSettings = function(){
-            /*if(!this.settings.nbr_img){
-                this.settings.nbr_img = 1;
-            }
-
-            if(!this.settings.length_ramp){
-                this.settings.length_ramp = 100;
-            }
-
-            if(!this.settings.position_ramp){
-                this.settings.position_ramp = 0;
-            }
-
-            if(!this.settings.nbrPix){
-                this.settings.nbrPix = 2049;
-            }
-
-            if(!this.settings.decimation){
-                this.settings.decimation = 1;
-            }*/
-
-
+        this.sendSettings = function(){ 
             $http.post('/api/sendSettings', this.settings);
             $http.get('/api/receive').then(function(res){
                 $scope.data.sendData(res.data)

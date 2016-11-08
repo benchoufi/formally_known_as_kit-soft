@@ -36,7 +36,5 @@ print  ("Mean square error between the images is %s"%mse)
 # estimate the normalised root mean square error between the images
 
 rmse = measure.compare_nrmse(image_name1,image_name2)
-ssim = measure.compare_ssim(image_name1,image_name2)
 
 print  ("Normalised root mean squre error between the images is %s"%rmse)
-print ("SSIM is %s"%ssim)
